@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 날씨 정보 모델
+model Weather {
+  id          Int      @id @default(autoincrement())
+  city        String
+  temperature Float
+  condition   String // 날씨 상태 (맑음, 흐림, 비, 눈 등)
+  humidity    Int?
+  wind        Float?
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  diaries     Diary[]
+
+  @@index([city, date])
+}
+
+// 일기 모델
+model Diary {
+  id               Int       @id @default(autoincrement())
+  title            String
+  content          String
+  date             DateTime
+  weatherId        Int
+  weather          Weather   @relation(fields: [weatherId], references: [id])
+  comments         Comment[]
+  selectedClothes  String? // 선택된 옷차림
+  selectedFood     String? // 선택된 음식
+  selectedActivity String? // 선택된 활동
+  selectedMovie    String? // 선택된 영화
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([date])
+}
+
+// 댓글 모델
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  diaryId   Int
+  diary     Diary    @relation(fields: [diaryId], references: [id])
+  author    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([diaryId])
+}
+
+// 추천 모델
+model Recommendation {
+  id          Int      @id @default(autoincrement())
+  weatherType String // 날씨 타입 (sunny, rainy, cloudy, snowy 등)
+  tempMin     Float? // 최소 온도
+  tempMax     Float? // 최대 온도
+  clothes     String[] // 추천 옷차림
+  foods       String[] // 추천 음식
+  drinks      String[] // 추천 음료
+  activities  String[] // 추천 활동
+  movies      String[] // 추천 영화
+  title       String // 추천 제목
+  description String? // 추천 설명
+  icon        String? // 추천 아이콘 경로
+  category    String // 추천 카테고리 (옷차림, 점심/저녁 메뉴, 활동, 영화)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([weatherType])
+  @@index([category])
+}

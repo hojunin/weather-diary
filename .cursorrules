@@ -1,0 +1,64 @@
+# Instructions
+
+During you interaction with the user, if you find anything reusable in this project (e.g. version of a library, model name), especially about a fix to a mistake you made or a correction you received, you should take note in the `Lessons` section in the `.cursorrules` file so you will not make the same mistake again. 
+
+You should also use the `.cursorrules` file as a scratchpad to organize your thoughts. Especially when you receive a new task, you should first review the content of the scratchpad, clear old different task if necessary, first explain the task, and plan the steps you need to take to complete the task. You can use todo markers to indicate the progress, e.g.
+[X] Task 1
+[ ] Task 2
+
+Also update the progress of the task in the Scratchpad when you finish a subtask.
+Especially when you finished a milestone, it will help to improve your depth of task accomplishment to use the scratchpad to reflect and plan.
+The goal is to help you maintain a big picture as well as the progress of the task. Always refer to the Scratchpad when you plan the next step.
+
+# Lessons
+
+## User Specified Lessons
+
+- Always respond in korean
+- when you fix problem about typeScript, never use "any" or type assersion. if using "any" or type assersion is inevitable, explain in detail
+- When comment needed, we use 3 types of comments type. // NOTE: // FIXME: // TODO. 
+- always use pnpm for package manager
+
+## Cursor learned
+
+# Scratchpad
+
+## tRPC + Next.js App Router + TailwindCSS + PostgreSQL 프로젝트 계획
+
+### 프로젝트 설명
+tRPC와 Next.js App Router를 활용한 풀스택 애플리케이션을 만들 예정입니다. CSS는 TailwindCSS를 사용하고 tailwind-variant와 tailwind-merge도 함께 설치합니다. 데이터베이스는 로컬 PostgreSQL을 사용할 예정입니다.
+
+### 작업 단계
+[X] 1. 프로젝트 초기화
+  [X] 1.1. Next.js 프로젝트 생성 (App Router 사용)
+  [X] 1.2. 필요한 패키지 설치 (tRPC, TailwindCSS, tailwind-variant, tailwind-merge 등)
+
+[X] 2. tRPC 설정
+  [X] 2.1. tRPC 서버 설정
+  [X] 2.2. tRPC 클라이언트 설정
+  [X] 2.3. tRPC 라우터 설정
+
+[X] 3. 데이터베이스 설정
+  [X] 3.1. PostgreSQL 연결 설정
+  [X] 3.2. Prisma 설정 (ORM으로 사용)
+  [X] 3.3. 기본 스키마 설정
+
+[X] 4. 스타일링 설정
+  [X] 4.1. TailwindCSS 초기화
+  [X] 4.2. tailwind-variant 설정
+  [X] 4.3. tailwind-merge 설정
+
+[X] 5. 기본 컴포넌트 및 페이지 설정
+  [X] 5.1. 레이아웃 컴포넌트 생성
+  [X] 5.2. 기본 페이지 설정
+  [X] 5.3. tRPC 연동 샘플 구현
+
+[X] 6. 프로젝트 폴더 이동
+  [X] 6.1. weather-daily 폴더 생성
+  [X] 6.2. 기존 프로젝트 파일 이동
+  [X] 6.3. 환경 설정 업데이트
+
+[ ] 7. 테스트 및 검증
+  [ ] 7.1. 기본 동작 테스트
+  [ ] 7.2. 데이터베이스 연결 테스트
+  [ ] 7.3. tRPC 요청/응답 테스트 
